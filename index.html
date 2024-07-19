@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Dictionary</title>
+  </head>
+  <body>
+    <main>
+      <div class="body-wrapper">
+        <div>
+          <nav>
+            <div>
+              <img
+                class="web-logo"
+                src="images/icons8-book-24.png"
+                alt="web-logo"
+              />
+            </div>
+            <div class="s-t-wrapper">
+              <div>
+                <label for="fonts" id="fontlabel"></label>
+                <div class="select-container">
+                  <select name="fonts" id="fonts">
+                    <option value="Serif">Serif</option>
+                    <option value="Roboto">Roboto</option>
+                    <option value="Poppins">Poppins</option>
+                  </select>
+                </div>
+              </div>
+              <div class="empty-div"></div>
+              <div>
+                <label class="switch">
+                  <input type="checkbox" />
+                  <span class="slider"></span>
+                </label>
+              </div>
+            </div>
+          </nav>
+        </div>
+        <div class="input-wrapper">
+          <input type="search" id="searchinput" />
+          <button id="searchbtn">
+            <svg
+              id="searchicon"
+              xmlns="http://www.w3.org/2000/svg"
+              x="0px"
+              y="0px"
+              width="28"
+              height="28"
+              viewBox="0 0 30 30"
+              fill="#ab76d2"
+            >
+              <path
+                d="M 13 3 C 7.4889971 3 3 7.4889971 3 13 C 3 18.511003 7.4889971 23 13 23 C 15.396508 23 17.597385 22.148986 19.322266 20.736328 L 25.292969 26.707031 A 1.0001 1.0001 0 1 0 26.707031 25.292969 L 20.736328 19.322266 C 22.148986 17.597385 23 15.396508 23 13 C 23 7.4889971 18.511003 3 13 3 z M 13 5 C 17.430123 5 21 8.5698774 21 13 C 21 17.430123 17.430123 21 13 21 C 8.5698774 21 5 17.430123 5 13 C 5 8.5698774 8.5698774 5 13 5 z"
+              ></path>
+            </svg>
+          </button>
+        </div>
+        <div id="searchresult"></div>
+      </div>
+    </main>
+  </body>
+</html>
+<script src="script.js"></script>
