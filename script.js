@@ -1,6 +1,8 @@
 const searchInput = document.getElementById("searchinput");
 const searchBtn = document.getElementById("searchbtn");
 const searchResult = document.getElementById("searchresult");
+const fontsBtn = document.getElementById("fonts");
+const toggleBtn = document.getElementById("toggle");
 
 searchBtn.addEventListener("click", () => {
   if (searchInput.value !== "") {
@@ -28,11 +30,16 @@ async function checkApi(word) {
       let audioBtn = document.createElement("button");
       let playAudio = document.createElement("audio");
       let source = document.createElement("source");
+      let playIcon = document.createElement("img");
 
       headParagWrapper.appendChild(header);
       headParagWrapper.appendChild(paragraph);
       wordWrapper.appendChild(headParagWrapper);
       wordWrapper.appendChild(audioBtn);
+
+      wordWrapper.className = "word-phonetic-wrapper";
+      meaningsWrapper.className = "meanings-wrapper";
+      headParagWrapper.className = "header-wrapper";
 
       header.appendChild(document.createTextNode(element.word));
       element.phonetics.forEach((phonetic) => {
@@ -41,23 +48,28 @@ async function checkApi(word) {
           source.src = phonetic.audio;
         }
       });
+      paragraph.style.color = "#ab76d2";
+      paragraph.style.fontSize = "24px";
+      paragraph.style.fontWeight = "700";
+      header.style.fontSize = "48px";
+      playIcon.src = "images/icons8-play-24.png";
+      audioBtn.appendChild(playIcon);
       source.type = "audio/mpeg";
       playAudio.controls = true;
       playAudio.appendChild(source);
       audioBtn.appendChild(playAudio);
-      audioBtn.textContent = "Play";
       audioBtn.id = "playBtn";
       searchResult.appendChild(wordWrapper);
       searchResult.appendChild(meaningsWrapper);
 
-      let title = document.createElement("h4");
-      title.textContent = "Meaning";
-      meaningsWrapper.appendChild(title);
       element.meanings.forEach((meaning) => {
-        // Create and append the partOfSpeech header
         let partOfSpeech = document.createElement("h4");
         partOfSpeech.textContent = meaning.partOfSpeech;
         meaningsWrapper.appendChild(partOfSpeech);
+
+        let title = document.createElement("h4");
+        title.textContent = "Meaning";
+        meaningsWrapper.appendChild(title);
 
         let ul = document.createElement("ul");
         meaningsWrapper.appendChild(ul);
@@ -71,9 +83,10 @@ async function checkApi(word) {
             synonymTitle.textContent = "Synonym: ";
             synonymArray.push(syn);
           });
-          console.log(synonymArray);
           let synonym = document.createElement("span");
           synonym.textContent = synonymArray.join(", ");
+          synonym.style.color = "#ab76d2";
+          synonym.style.fontWeight = "700";
           synonymWrapper.appendChild(synonym);
           meaningsWrapper.appendChild(synonymWrapper);
         }
@@ -95,7 +108,7 @@ async function checkApi(word) {
           footerTitle.textContent = "Source: ";
           footer.textContent = url;
         });
-        searchResult.appendChild(footerWrapper);
+        meaningsWrapper.appendChild(footerWrapper);
       }
 
       console.log(response);
@@ -114,3 +127,27 @@ async function checkApi(word) {
     console.log(error);
   }
 }
+
+fontsBtn.addEventListener("change", () => {
+  if (fontsBtn.value === "Serif") {
+    document.body.style.fontFamily = "serif";
+  } else if (fontsBtn.value === "Poppins") {
+    document.body.style.fontFamily = "Poppins";
+  } else if (fontsBtn.value === "Roboto") {
+    document.body.style.fontFamily = "Roboto";
+  } else {
+    document.body.style.fontFamily = "sans-serif";
+  }
+});
+
+toggleBtn.addEventListener("click", () => {
+  document.body.style.transition = "all 0.5s ease, color 0.5s ease;";
+  if (checkBox.checked === true) {
+    document.body.style.backgroundColor = "#000";
+    document.body.style.color = "#fff";
+    playBtn.style.backgroundColor = "#ab76d290";
+  } else {
+    document.body.style.backgroundColor = "#fff";
+    document.body.style.color = "#000";
+  }
+});
