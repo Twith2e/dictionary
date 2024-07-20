@@ -14,7 +14,20 @@ searchBtn.addEventListener("click", () => {
 
     checkApi(word);
   } else {
-    alert("not happening");
+    alert("no word in the input field");
+  }
+});
+
+searchInput.addEventListener("keydown", (e) => {
+  if (e.key === "Enter") {
+    e.preventDefault();
+    if (searchInput.value !== "") {
+      let word = searchInput.value;
+
+      checkApi(word);
+    } else {
+      alert("no word in the input field");
+    }
   }
 });
 
