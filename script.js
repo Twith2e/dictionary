@@ -68,7 +68,6 @@ async function checkApi(word) {
       paragraph.style.color = "#ab76d2";
       paragraph.style.fontSize = "24px";
       paragraph.style.fontWeight = "700";
-      header.style.fontSize = "48px";
       playIcon.src = "images/icons8-play-24.png";
       audioBtn.appendChild(playIcon);
       source.type = "audio/mpeg";

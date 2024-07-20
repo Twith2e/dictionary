@@ -194,6 +194,10 @@ ul {
   gap: 20px;
 }
 
+.header-wrapper h1 {
+  font-size: 32px;
+}
+
 #playBtn {
   align-items: center;
   background: #ac76d247;
@@ -229,5 +233,9 @@ ul {
 @media (min-width: 1025px) {
   .body-wrapper {
     width: 60%;
+  }
+
+  .header-wrapper h1 {
+    font-size: 48px;
   }
 }
