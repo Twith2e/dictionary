@@ -16,6 +16,10 @@ input {
   border: none;
 }
 
+a {
+  color: #444;
+}
+
 button {
   background: transparent;
   font-size: 18px;
@@ -205,6 +209,21 @@ ul {
 
 #playBtn img {
   height: 40px;
+}
+
+.source-link-wrapper,
+.synonym-wrapper {
+  display: flex;
+  gap: 20px;
+}
+
+.synonym-wrapper {
+  font-size: 20px;
+}
+
+.source-link-wrapper span,
+.synonym-head {
+  color: grey;
 }
 
 @media (min-width: 1025px) {

@@ -3,6 +3,7 @@ const searchBtn = document.getElementById("searchbtn");
 const searchResult = document.getElementById("searchresult");
 const fontsBtn = document.getElementById("fonts");
 const toggleBtn = document.getElementById("toggle");
+let check = false;
 
 searchBtn.addEventListener("click", () => {
   if (searchInput.value !== "") {
@@ -77,10 +78,11 @@ async function checkApi(word) {
         if (meaning.synonyms.length > 0) {
           let synonymWrapper = document.createElement("div");
           let synonymTitle = document.createElement("span");
+          synonymTitle.className = "synonym-head";
           synonymWrapper.appendChild(synonymTitle);
           let synonymArray = [];
           meaning.synonyms.forEach((syn) => {
-            synonymTitle.textContent = "Synonym: ";
+            synonymTitle.textContent = "Synonyms";
             synonymArray.push(syn);
           });
           let synonym = document.createElement("span");
@@ -89,6 +91,7 @@ async function checkApi(word) {
           synonym.style.fontWeight = "700";
           synonymWrapper.appendChild(synonym);
           meaningsWrapper.appendChild(synonymWrapper);
+          synonymWrapper.className = "synonym-wrapper";
         }
 
         meaning.definitions.forEach((definition) => {
@@ -100,19 +103,20 @@ async function checkApi(word) {
 
       if (element.sourceUrls.length > 0) {
         let footerWrapper = document.createElement("div");
+        footerWrapper.className = "source-link-wrapper";
         let footerTitle = document.createElement("span");
-        let footer = document.createElement("span");
+        let footer = document.createElement("a");
         footerWrapper.appendChild(footerTitle);
         footerWrapper.appendChild(footer);
         element.sourceUrls.forEach((url) => {
-          footerTitle.textContent = "Source: ";
+          footerTitle.textContent = "Source";
           footer.textContent = url;
+          footer.href = url;
         });
         meaningsWrapper.appendChild(footerWrapper);
       }
 
       console.log(response);
-
       playBtn.addEventListener("click", () => {
         if (playAudio.paused) {
           playAudio.play();
@@ -151,3 +155,21 @@ toggleBtn.addEventListener("click", () => {
     document.body.style.color = "#000";
   }
 });
+
+function checkSystemTheme() {
+  if (
+    window.matchMedia &&
+    window.matchMedia("(prefers-color-scheme: dark)").matches
+  ) {
+    checkBox.checked = true;
+    document.body.style.backgroundColor = "#000";
+    document.body.style.color = "#fff";
+    playBtn.style.backgroundColor = "#ab76d290";
+  } else {
+    checkBox.checked = false;
+    document.body.style.backgroundColor = "#fff";
+    document.body.style.color = "#000";
+  }
+}
+
+checkSystemTheme();
