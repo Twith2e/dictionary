@@ -3,7 +3,10 @@ const searchBtn = document.getElementById("searchbtn");
 const searchResult = document.getElementById("searchresult");
 const fontsBtn = document.getElementById("fonts");
 const toggleBtn = document.getElementById("toggle");
-let check = false;
+
+if (!isMobileDevice()) {
+  searchInput.focus();
+}
 
 searchBtn.addEventListener("click", () => {
   if (searchInput.value !== "") {
@@ -112,6 +115,8 @@ async function checkApi(word) {
           footerTitle.textContent = "Source";
           footer.textContent = url;
           footer.href = url;
+          footer.target = "_blank";
+          footer.rel = "noopener noreferrer";
         });
         meaningsWrapper.appendChild(footerWrapper);
       }
@@ -173,3 +178,9 @@ function checkSystemTheme() {
 }
 
 checkSystemTheme();
+
+function isMobileDevice() {
+  return /Mobi|Android|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
+    navigator.userAgent
+  );
+}
