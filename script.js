@@ -85,76 +85,6 @@ async function checkApi(word) {
         }
         meaningsByPartOfSpeech[meaning.partOfSpeech].push(meaning);
       });
-      for (let meaning in meaningsByPartOfSpeech) {
-        if (meaning.length > 1) {
-          let partOfSpeech = document.createElement("h4");
-          partOfSpeech.textContent = meaning;
-          meaningsWrapper.append(partOfSpeech);
-        }
-
-        let title = document.createElement("h4");
-        title.textContent = "Meaning";
-        meaningsWrapper.append(title);
-
-        let ul = document.createElement("ul");
-        meaningsWrapper.append(ul);
-
-        meaningsByPartOfSpeech[meaning].forEach((meaning) => {
-          if (meaning.antonyms.length > 0) {
-            let antonymWrapper = document.createElement("div");
-            antonymWrapper.className = "synonym-wrapper";
-            let antonymTitle = document.createElement("span");
-            antonymTitle.className = "synonym-head";
-            antonymTitle.textContent = "Antonyms";
-            antonymWrapper.append(antonymTitle);
-
-            let antonymArray = [];
-            meaning.antonyms.forEach((ant) => {
-              antonymArray.push(ant);
-            });
-
-            let antonym = document.createElement("span");
-            antonym.textContent = antonymArray.join(", ");
-            antonym.style.color = "#ab76d2";
-            antonym.style.fontWeight = "700";
-            antonymWrapper.append(antonym);
-            meaningsWrapper.append(antonymWrapper);
-          }
-
-          if (meaning.synonyms.length > 0) {
-            let synonymWrapper = document.createElement("div");
-            synonymWrapper.className = "synonym-wrapper";
-            let synonymTitle = document.createElement("span");
-            synonymTitle.className = "synonym-head";
-            synonymTitle.textContent = "Synonyms";
-            synonymWrapper.append(synonymTitle);
-
-            let synonymArray = [];
-            meaning.synonyms.forEach((syn) => {
-              synonymArray.push(syn);
-            });
-
-            let synonym = document.createElement("span");
-            synonym.textContent = synonymArray.join(", ");
-            synonym.style.color = "#ab76d2";
-            synonym.style.fontWeight = "700";
-            synonymWrapper.append(synonym);
-            meaningsWrapper.append(synonymWrapper);
-          }
-
-          meaning.definitions.forEach((definition) => {
-            let li = document.createElement("li");
-            li.textContent = definition.definition;
-            ul.append(li);
-
-            if (definition.example) {
-              let example = document.createElement("span");
-              example.textContent = `"${definition.example}"`;
-              ul.append(example);
-            }
-          });
-        });
-      }
 
       console.log(response);
 
@@ -169,6 +99,74 @@ async function checkApi(word) {
         }
       });
     });
+    for (let meaning in meaningsByPartOfSpeech) {
+      let partOfSpeech = document.createElement("h4");
+      partOfSpeech.textContent = meaning;
+      meaningsWrapper.append(partOfSpeech);
+
+      let title = document.createElement("h4");
+      title.textContent = "Meaning";
+      meaningsWrapper.append(title);
+
+      let ul = document.createElement("ul");
+      meaningsWrapper.append(ul);
+
+      meaningsByPartOfSpeech[meaning].forEach((meaning) => {
+        if (meaning.antonyms.length > 0) {
+          let antonymWrapper = document.createElement("div");
+          antonymWrapper.className = "synonym-wrapper";
+          let antonymTitle = document.createElement("span");
+          antonymTitle.className = "synonym-head";
+          antonymTitle.textContent = "Antonyms";
+          antonymWrapper.append(antonymTitle);
+
+          let antonymArray = [];
+          meaning.antonyms.forEach((ant) => {
+            antonymArray.push(ant);
+          });
+
+          let antonym = document.createElement("span");
+          antonym.textContent = antonymArray.join(", ");
+          antonym.style.color = "#ab76d2";
+          antonym.style.fontWeight = "700";
+          antonymWrapper.append(antonym);
+          meaningsWrapper.append(antonymWrapper);
+        }
+
+        if (meaning.synonyms.length > 0) {
+          let synonymWrapper = document.createElement("div");
+          synonymWrapper.className = "synonym-wrapper";
+          let synonymTitle = document.createElement("span");
+          synonymTitle.className = "synonym-head";
+          synonymTitle.textContent = "Synonyms";
+          synonymWrapper.append(synonymTitle);
+
+          let synonymArray = [];
+          meaning.synonyms.forEach((syn) => {
+            synonymArray.push(syn);
+          });
+
+          let synonym = document.createElement("span");
+          synonym.textContent = synonymArray.join(", ");
+          synonym.style.color = "#ab76d2";
+          synonym.style.fontWeight = "700";
+          synonymWrapper.append(synonym);
+          meaningsWrapper.append(synonymWrapper);
+        }
+
+        meaning.definitions.forEach((definition) => {
+          let li = document.createElement("li");
+          li.textContent = definition.definition;
+          ul.append(li);
+
+          if (definition.example) {
+            let example = document.createElement("span");
+            example.textContent = `"${definition.example}"`;
+            ul.append(example);
+          }
+        });
+      });
+    }
     if (response[0].sourceUrls.length > 0) {
       let footerWrapper = document.createElement("div");
       footerWrapper.className = "source-link-wrapper";
