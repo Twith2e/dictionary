@@ -86,9 +86,6 @@ async function checkApi(word) {
         meaningsByPartOfSpeech[meaning.partOfSpeech].push(meaning);
       });
 
-      console.log(response);
-
-      // console.log(response);
       playBtn.addEventListener("click", () => {
         if (playAudio.paused) {
           playAudio.play();
@@ -181,8 +178,6 @@ async function checkApi(word) {
       footer.rel = "noopener noreferrer";
       meaningsWrapper.append(footerWrapper);
     }
-
-    console.log(meaningsByPartOfSpeech);
   } catch (error) {
     console.log(error);
   }
