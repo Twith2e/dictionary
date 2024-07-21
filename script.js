@@ -156,23 +156,6 @@ async function checkApi(word) {
         });
       }
 
-      if (element.sourceUrls.length > 0) {
-        let footerWrapper = document.createElement("div");
-        footerWrapper.className = "source-link-wrapper";
-        let footerTitle = document.createElement("span");
-        let footer = document.createElement("a");
-        footerWrapper.append(footerTitle);
-        footerWrapper.append(footer);
-        element.sourceUrls.forEach((url) => {
-          footerTitle.textContent = "Source";
-          footer.textContent = url;
-          footer.href = url;
-          footer.target = "_blank";
-          footer.rel = "noopener noreferrer";
-        });
-        meaningsWrapper.append(footerWrapper);
-      }
-
       console.log(response);
 
       // console.log(response);
@@ -186,6 +169,20 @@ async function checkApi(word) {
         }
       });
     });
+    if (response[0].sourceUrls.length > 0) {
+      let footerWrapper = document.createElement("div");
+      footerWrapper.className = "source-link-wrapper";
+      let footerTitle = document.createElement("span");
+      let footer = document.createElement("a");
+      footerWrapper.append(footerTitle);
+      footerWrapper.append(footer);
+      footerTitle.textContent = "Source";
+      footer.textContent = response[0].sourceUrls[0];
+      footer.href = response[0].sourceUrls[0];
+      footer.target = "_blank";
+      footer.rel = "noopener noreferrer";
+      meaningsWrapper.append(footerWrapper);
+    }
 
     console.log(meaningsByPartOfSpeech);
   } catch (error) {
