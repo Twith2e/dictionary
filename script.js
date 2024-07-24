@@ -3,6 +3,8 @@ const searchBtn = document.getElementById("searchbtn");
 const searchResult = document.getElementById("searchresult");
 const fontsBtn = document.getElementById("fonts");
 const toggleBtn = document.getElementById("toggle");
+const clearInput = document.getElementById("clearInput");
+clearInput.style.display = "none";
 
 if (!isMobileDevice()) {
   searchInput.focus();
@@ -12,6 +14,7 @@ searchBtn.addEventListener("click", () => {
   if (searchInput.value !== "") {
     let word = searchInput.value;
     checkApi(word);
+    searchInput.value = "";
   } else {
     alert("No word in the input field");
   }
@@ -23,6 +26,7 @@ searchInput.addEventListener("keydown", (e) => {
     if (searchInput.value !== "") {
       let word = searchInput.value;
       checkApi(word);
+      searchInput.value = "";
     } else {
       alert("No word in the input field");
     }
@@ -256,3 +260,13 @@ function isMobileDevice() {
     navigator.userAgent
   );
 }
+
+clearInput.addEventListener("click", () => {
+  searchInput.value = "";
+});
+
+searchInput.addEventListener("input", () => {
+  searchInput.value !== ""
+    ? (clearInput.style.display = "block")
+    : (clearInput.style.display = "none");
+});

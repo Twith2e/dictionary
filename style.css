@@ -110,6 +110,7 @@ main,
   background: #f4f4f4;
   border-radius: 10px;
   display: flex;
+  gap: 10px;
   padding-inline: 20px;
   width: 100%;
 }
