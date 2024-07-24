@@ -216,17 +216,20 @@ ul {
 }
 
 .source-link-wrapper,
-.synonym-wrapper {
+.synonym-wrapper,
+.antonym-wrapper {
   display: flex;
   gap: 20px;
 }
 
-.synonym-wrapper {
+.synonym-wrapper,
+.antonym-wrapper {
   font-size: 18px;
 }
 
 .source-link-wrapper span,
-.synonym-head {
+.synonym-head,
+.antonym-head {
   color: grey;
 }
 
