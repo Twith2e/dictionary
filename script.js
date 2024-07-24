@@ -4,13 +4,13 @@ const searchResult = document.getElementById("searchresult");
 const fontsBtn = document.getElementById("fonts");
 const toggleBtn = document.getElementById("toggle");
 const clearInput = document.getElementById("clearInput");
-clearInput.style.display = "none";
 
 if (!isMobileDevice()) {
   searchInput.focus();
 }
 
 searchBtn.addEventListener("click", () => {
+  clearInput.style.display = "none";
   if (searchInput.value !== "") {
     let word = searchInput.value;
     checkApi(word);
@@ -21,6 +21,7 @@ searchBtn.addEventListener("click", () => {
 });
 
 searchInput.addEventListener("keydown", (e) => {
+  clearInput.style.display = "none";
   if (e.key === "Enter") {
     e.preventDefault();
     if (searchInput.value !== "") {
