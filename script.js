@@ -36,12 +36,10 @@ searchInput.addEventListener("keydown", (e) => {
 
 async function checkApi(word) {
   const URI = `https://api.dictionaryapi.dev/api/v2/entries/en/${word}`;
-
   try {
     const data = await fetch(URI);
     const response = await data.json();
 
-    // Clear previous search results
     searchResult.innerHTML = "";
     let meaningsWrapper = document.createElement("div");
     meaningsWrapper.className = "meanings-wrapper";
@@ -210,6 +208,17 @@ async function checkApi(word) {
         footer.rel = "noopener noreferrer";
         meaningsWrapper.append(footerWrapper);
       }
+    } else {
+      searchResult.innerHTML = "";
+      let errorWrapper = document.createElement("div");
+      let errorMsg = document.createElement("p");
+      errorMsg.textContent = response.message;
+      errorWrapper.appendChild(errorMsg);
+      errorWrapper.className = "error";
+      searchResult.appendChild(errorWrapper);
+      searchResult.style.height = "80%";
+      document.querySelector(".error").style.alignSelf = "center";
+      document.querySelector(".error").style.justifySelf = "center";
     }
   } catch (error) {
     console.log(error);

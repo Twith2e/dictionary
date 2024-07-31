@@ -234,6 +234,17 @@ ul {
   color: grey;
 }
 
+.error {
+  color: #999;
+  font-size: 30px;
+  left: 50%;
+  line-height: 40px;
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 500px;
+}
+
 @media (min-width: 1025px) {
   .body-wrapper {
     width: 60%;
