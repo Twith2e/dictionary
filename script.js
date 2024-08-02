@@ -226,8 +226,8 @@ async function checkApi(word) {
 }
 
 fontsBtn.addEventListener("change", () => {
-  if (fontsBtn.value === "Serif") {
-    document.body.style.fontFamily = "serif";
+  if (fontsBtn.value === "Lato") {
+    document.body.style.fontFamily = "Lato";
   } else if (fontsBtn.value === "Poppins") {
     document.body.style.fontFamily = "Poppins";
   } else if (fontsBtn.value === "Roboto") {
