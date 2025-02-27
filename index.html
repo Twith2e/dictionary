@@ -3,6 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="This is a simple dictionary site for looking up words in different fonts you may wish"/>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -26,20 +27,21 @@
             </div>
             <div class="s-t-wrapper">
               <div>
-                <div class="select-container">
+                <label class="select-container">
                   <select name="fonts" id="fonts">
                     <option value="Lato">Lato</option>
                     <option value="Roboto">Roboto</option>
                     <option value="Poppins">Poppins</option>
                     <option value="Sans-serif">Sans-serif</option>
                   </select>
-                </div>
+                </label>
               </div>
               <div class="empty-div"></div>
               <div id="toggle">
-                <label class="switch">
+                <label for="checkBox" class="switch">
                   <input id="checkBox" type="checkbox" />
                   <span class="slider"></span>
+                  <span class="sr-only">Toggle theme</span>
                 </label>
               </div>
             </div>
@@ -47,7 +49,7 @@
         </div>
         <div class="input-wrapper">
           <input autocomplete="off" type="text" id="searchinput" />
-          <button id="clearInput" style="display: none">
+          <button id="clearInput" name="search button" aria-label="search button" style="display: none">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               x="0px"

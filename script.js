@@ -4,6 +4,8 @@ const searchResult = document.getElementById("searchresult");
 const fontsBtn = document.getElementById("fonts");
 const toggleBtn = document.getElementById("toggle");
 const clearInput = document.getElementById("clearInput");
+const checkBox = document.getElementById("checkBox");
+
 
 if (!isMobileDevice()) {
   searchInput.focus();
@@ -246,6 +248,11 @@ toggleBtn.addEventListener("click", () => {
     document.body.style.backgroundColor = "#fff";
     document.body.style.color = "#000";
   }
+});
+
+
+checkBox.addEventListener("change", () => {
+  checkBox.setAttribute("aria-checked", checkBox.checked.toString());
 });
 
 function checkSystemTheme() {
