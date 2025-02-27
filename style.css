@@ -54,7 +54,8 @@ select::after {
 
 .select-container {
   position: relative;
-  display: inline-block;
+  display: flex;
+  flex-direction: column;
 }
 
 label {
@@ -253,7 +254,7 @@ ul {
   position: absolute;
   top: 50%;
   transform: translate(-50%, -50%);
-  width: 500px;
+  width: 70%;
 }
 
 @media (min-width: 1025px) {
