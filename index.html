@@ -27,7 +27,7 @@
             </div>
             <div class="s-t-wrapper">
               <div>
-                <label class="select-container">
+                <label id="fonts" class="select-container">
                   <select name="fonts" id="fonts">
                     <option value="Lato">Lato</option>
                     <option value="Roboto">Roboto</option>
@@ -47,9 +47,10 @@
             </div>
           </nav>
         </div>
-        <div class="input-wrapper">
+          <label for="searchinput">Search</label>
+        <div class="input-wrapper" style="margin-top: 20px">
           <input autocomplete="off" type="text" id="searchinput" />
-          <button id="clearInput" name="search button" aria-label="search button" style="display: none">
+          <button id="clearInput" aria-label="Clear input button" style="display: none">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               x="0px"
@@ -64,7 +65,7 @@
               ></path>
             </svg>
           </button>
-          <button id="searchbtn">
+          <button aria-label="search button" id="searchbtn">
             <svg
               id="searchicon"
               xmlns="http://www.w3.org/2000/svg"
